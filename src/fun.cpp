@@ -25,6 +25,7 @@ unsigned int faStr1(const char *qwerty) {
 			}
 		}
 	}
+	return in;
 }
 unsigned int faStr2(const char *qwerty) {
 	int i = 0, count = 0, in = 0, F = 0;
