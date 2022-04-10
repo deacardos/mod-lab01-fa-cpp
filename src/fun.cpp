@@ -25,6 +25,12 @@ unsigned int faStr2(const char *qwerty) {
 		if (qwerty[i] == ' ' && qwerty[i + 1] != ' ' && (int)qwerty[i + 1] < 91) {
 			in++;
 		}
+		if (i == 0 && qwerty[i] != ' ') {
+			for (int f = i; (int)qwerty[f] != 32; f++) {
+				if ((int)qwerty[f] < 47)
+					in--;
+			}
+		}
 		i++;
 	}
 	count = in + 1;
