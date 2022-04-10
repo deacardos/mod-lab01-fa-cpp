@@ -6,24 +6,15 @@ unsigned int faStr1(const char *qwerty) {
 	while (qwerty[i] != '\0') {
 		if (qwerty[i] == ' ' && (int)qwerty[i + 1] != 32) {
 			for (int f = i + 1; (int)qwerty[f] != 32; f++) {
-				if (58 > (int)qwerty[f] > 47)
+				if ((int)qwerty[f] > 47 && (int)qwerty[f]< 58)
 					F++;
 			}
-			if (F == 0) {
+			if (F == 0)
 				in++;
+			else
 				F = 0;
-			}
 		}
-		if ((int)qwerty[1] != 32) {
-			for (int f = i; (int)qwerty[f] != 32; f++) {
-				if (58 > (int)qwerty[f] > 47)
-					F++;
-			}
-			if (F == 0) {
-				in++;
-				F = 0;
-			}
-		}
+		i++;
 	}
 	return in;
 }
@@ -31,12 +22,7 @@ unsigned int faStr2(const char *qwerty) {
 	int i = 0, count = 0, in = 0, F = 0;
 	while (qwerty[i] != '\0')
 	{
-		if (qwerty[i] == ' ' && qwerty[i + 1] != ' ' && qwerty[i - 1] != ' ' && (int)qwerty[i + 1] < 90) {
-			in++;
-			F = 1;
-		}
-		else if (qwerty[i] == ' ' && qwerty[i + 1] == ' ' && (int)qwerty[i + 1] < 91)
-		{
+		if (qwerty[i] == ' ' && qwerty[i + 1] != ' ' && (int)qwerty[i + 1] < 91) {
 			in++;
 		}
 		i++;
@@ -48,17 +34,18 @@ unsigned int faStr3(const char *qwerty) {
 	int i = 0, count = 0, in = 0, F = 0;
 	while (qwerty[i] != '\0') {
 		if (qwerty[i] == ' ' && (int)qwerty[i + 1] != 32) {
-			for (int f = i + 1; (int)qwerty[f] != 32; f++) {
+			for (int f = i + 1; (int)qwerty[f] != 32 && (int)qwerty[f]!='\0'; f++) {
 				F++;
 			}
 			count++;
 		}
-		if (qwerty[1] != ' ') {
+		if (i==0 && qwerty[0] != ' ') {
 			for (int f = i; (int)qwerty[f] != 32; f++) {
 				F++;
 			}
 			count++;
 		}
+		i++;
 	}
 	in = F / count;
 	return in;
